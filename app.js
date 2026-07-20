@@ -107,3 +107,55 @@ document.getElementById("menu-toggle").addEventListener("click", () =>
 buildSidebar();
 window.addEventListener("hashchange", render);
 render();
+
+// Search
+const searchInput = document.getElementById("search-input");
+const searchResults = document.getElementById("search-results");
+let searchCache = null;
+
+async function loadSearchCache() {
+  if (searchCache) return searchCache;
+  searchCache = await Promise.all(
+    LESSONS.map(async (l) => {
+      try {
+        const res = await fetch(l.file);
+        return { ...l, text: res.ok ? (await res.text()).toLowerCase() : "" };
+      } catch {
+        return { ...l, text: "" };
+      }
+    })
+  );
+  return searchCache;
+}
+
+function snippet(text, q) {
+  const i = text.indexOf(q);
+  const start = Math.max(0, i - 40);
+  return "…" + text.slice(start, i + q.length + 60).replace(/\s+/g, " ") + "…";
+}
+
+searchInput.addEventListener("input", async () => {
+  const q = searchInput.value.trim().toLowerCase();
+  if (q.length < 2) {
+    searchResults.hidden = true;
+    searchResults.innerHTML = "";
+    return;
+  }
+  const cache = await loadSearchCache();
+  const hits = cache.filter(
+    (l) => l.title.toLowerCase().includes(q) || l.text.includes(q)
+  ).slice(0, 8);
+  searchResults.innerHTML = hits.length
+    ? hits.map((l) =>
+        `<a class="search-hit" href="#/${slugOf(l)}">` +
+        `<span class="hit-title">${l.title}</span>` +
+        `${l.text.includes(q) ? snippet(l.text, q) : ""}</a>`
+      ).join("")
+    : '<span class="search-hit">No results</span>';
+  searchResults.hidden = false;
+});
+
+searchResults.addEventListener("click", () => {
+  searchResults.hidden = true;
+  searchInput.value = "";
+});

@@ -29,6 +29,16 @@ const sidebar = document.getElementById("sidebar");
 
 const slugOf = (l) => l.file.replace(/\.md$/, "");
 
+function escapeHtml(str) {
+  return String(str).replace(/[&<>"']/g, (c) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;",
+  }[c]));
+}
+
 function buildSidebar() {
   lessonList.innerHTML = LESSONS.map((l, i) => {
     const label = i === 0 ? "Intro" : String(i).padStart(2, "0");
@@ -64,7 +74,7 @@ async function render() {
 
 function renderError(slug) {
   content.innerHTML = `<h1>Lesson not found</h1>
-    <p>Could not load <code>${slug}</code>.</p>
+    <p>Could not load <code>${escapeHtml(slug)}</code>.</p>
     <p><a href="#/">← Back to course introduction</a></p>`;
 }
 

@@ -1,6 +1,6 @@
 # Spring Boot: From Zero to Senior
 
-A 20-lesson series. Simple English. Real code. One project that grows with you.
+A 21-lesson series. Simple English. Real code. One project that grows with you.
 
 ## The project we build
 
@@ -57,6 +57,11 @@ A **Task Manager API** called `taskhub`. It starts as one small app. By the end 
 | 18 | Microservices | Splitting the app, gateway, service discovery, Feign |
 | 19 | Resilience | Circuit breakers, retries, timeouts |
 | 20 | Docker and deployment | Dockerfile, docker-compose, the road to senior |
+
+### Part 7 — Automation
+| # | Lesson | You learn |
+|---|--------|-----------|
+| 21 | GitHub Actions and CI/CD | Workflows, build and test pipelines, automated deploys |
 
 ## How to study
 

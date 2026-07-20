@@ -1,4 +1,4 @@
-# 21 — GitHub Actions and CI/CD
+# Lesson 21 — GitHub Actions and CI/CD
 
 ## Why CI/CD
 

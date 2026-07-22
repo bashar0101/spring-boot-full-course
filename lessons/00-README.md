@@ -1,6 +1,6 @@
 # Spring Boot: From Zero to Senior
 
-A 21-lesson series. Simple English. Real code. One project that grows with you.
+A 21-lesson series. Real code. One project that grows with you.
 
 ## The project we build
 

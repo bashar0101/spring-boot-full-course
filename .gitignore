@@ -1,2 +1,8 @@
 # Added by code-review-graph
 .code-review-graph/
+
+# AI tooling, not part of the deployed site
+.claude/
+.mcp.json
+CLAUDE.md
+docs/superpowers/

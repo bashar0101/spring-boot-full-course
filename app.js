@@ -1,33 +1,33 @@
 const LESSONS = [
-  { file: "00-README.md", title: "Course Introduction" },
-  { file: "01-what-is-spring-boot.md", title: "What Is Spring Boot" },
-  { file: "02-first-project.md", title: "Your First Project" },
-  { file: "03-beans-and-injection.md", title: "Beans and Dependency Injection" },
-  { file: "04-configuration.md", title: "Configuration" },
-  { file: "05-rest-basics.md", title: "REST Basics" },
-  { file: "06-validation-and-errors.md", title: "Validation and Error Handling" },
-  { file: "07-jpa-and-postgres.md", title: "JPA and PostgreSQL" },
-  { file: "08-relations-paging.md", title: "Relations and Paging" },
-  { file: "09-services-transactions.md", title: "Services and Transactions" },
-  { file: "10-dtos-clean-structure.md", title: "DTOs and Clean Structure" },
-  { file: "11-spring-security-basics.md", title: "Spring Security Basics" },
-  { file: "12-jwt-authentication.md", title: "JWT Authentication" },
-  { file: "13-unit-testing.md", title: "Unit Testing" },
-  { file: "14-integration-testing.md", title: "Integration Testing" },
-  { file: "15-redis-caching.md", title: "Redis Caching" },
-  { file: "16-kafka-messaging.md", title: "Kafka Messaging" },
-  { file: "17-actuator-monitoring.md", title: "Actuator and Monitoring" },
-  { file: "18-microservices.md", title: "Microservices" },
-  { file: "19-resilience.md", title: "Resilience" },
-  { file: "20-docker-deployment.md", title: "Docker Deployment" },
-  { file: "21-github-actions.md", title: "GitHub Actions and CI/CD" },
+  { file: "lessons/00-README.md", title: "Course Introduction" },
+  { file: "lessons/01-what-is-spring-boot.md", title: "What Is Spring Boot" },
+  { file: "lessons/02-first-project.md", title: "Your First Project" },
+  { file: "lessons/03-beans-and-injection.md", title: "Beans and Dependency Injection" },
+  { file: "lessons/04-configuration.md", title: "Configuration" },
+  { file: "lessons/05-rest-basics.md", title: "REST Basics" },
+  { file: "lessons/06-validation-and-errors.md", title: "Validation and Error Handling" },
+  { file: "lessons/07-jpa-and-postgres.md", title: "JPA and PostgreSQL" },
+  { file: "lessons/08-relations-paging.md", title: "Relations and Paging" },
+  { file: "lessons/09-services-transactions.md", title: "Services and Transactions" },
+  { file: "lessons/10-dtos-clean-structure.md", title: "DTOs and Clean Structure" },
+  { file: "lessons/11-spring-security-basics.md", title: "Spring Security Basics" },
+  { file: "lessons/12-jwt-authentication.md", title: "JWT Authentication" },
+  { file: "lessons/13-unit-testing.md", title: "Unit Testing" },
+  { file: "lessons/14-integration-testing.md", title: "Integration Testing" },
+  { file: "lessons/15-redis-caching.md", title: "Redis Caching" },
+  { file: "lessons/16-kafka-messaging.md", title: "Kafka Messaging" },
+  { file: "lessons/17-actuator-monitoring.md", title: "Actuator and Monitoring" },
+  { file: "lessons/18-microservices.md", title: "Microservices" },
+  { file: "lessons/19-resilience.md", title: "Resilience" },
+  { file: "lessons/20-docker-deployment.md", title: "Docker Deployment" },
+  { file: "lessons/21-github-actions.md", title: "GitHub Actions and CI/CD" },
 ];
 
 const content = document.getElementById("content");
 const lessonList = document.getElementById("lesson-list");
 const sidebar = document.getElementById("sidebar");
 
-const slugOf = (l) => l.file.replace(/\.md$/, "");
+const slugOf = (l) => l.file.replace(/^lessons\//, "").replace(/\.md$/, "");
 
 function escapeHtml(str) {
   return String(str).replace(/[&<>"']/g, (c) => ({
